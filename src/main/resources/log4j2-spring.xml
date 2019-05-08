@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration  monitorInterval="30">
+    <Properties>
+        <Property name="PROJECT_NAME">demeter</Property>
+        <Property name="LOG_ENV">dev</Property>
+        <Property name="URIPATTERN">com.swhysc</Property>
+        <Property name="ELK_LOG_PATTERN">%m%n</Property>
+        <Property name="common_partern"
+                  value="${sys:PID} [%d{yyyy-MM-dd HH:mm:ss:SSS}] [%p] [%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-B3-ParentSpanId},%X{X-Span-Export}] %5t  %4c:%L  %m%n"/>
+    </Properties>
+    <appenders>
+        <console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${common_partern}" />
+        </console>
+    </appenders>
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console"/>
+        </root>
+    </loggers>
+</Configuration>
